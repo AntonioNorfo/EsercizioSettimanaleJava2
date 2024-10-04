@@ -13,14 +13,14 @@ public class Collezione {
     }
 
     public boolean addGame(CollectionOfGame newGame) {
-        for (CollectionOfGame g : games) {
-            if (g.getIdGame() == newGame.getIdGame()) {
+        for (CollectionOfGame game : games) {
+            if (game.getIdGame() == newGame.getIdGame()) {
                 System.out.println("\nIl gioco " + newGame.getTitle() + " è già presente nella collezione.");
                 return false;
             }
         }
         games.add(newGame);
-        System.out.println("\nAbbiamo aggiunto questo gioco: " + newGame);
+        System.out.println("\nAbbiamo aggiunto questo gioco: " + newGame.getTitle());
         return true;
     }
 
@@ -69,5 +69,22 @@ public class Collezione {
             return "Giochi da tavolo per " + numberOfPlayers + " giocatori: " + resultForPlayers;
         }
     }
+
+    public boolean removeGame(int idGame) {
+        CollectionOfGame gameToRemove = games.stream()
+                .filter(game -> game.getIdGame() == idGame)
+                .findFirst()
+                .orElse(null);
+
+        if (gameToRemove != null) {
+            games.remove(gameToRemove);
+            System.out.println("Il gioco " + gameToRemove.getTitle() + " è stato rimosso dalla collezione.");
+            return true;
+        } else {
+            System.out.println("Il gioco con ID " + idGame + " non è presente nella collezione.");
+            return false;
+        }
+    }
+
 
 }
