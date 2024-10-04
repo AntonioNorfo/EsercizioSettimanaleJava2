@@ -1,12 +1,13 @@
 package antonionorfo;
 
-public class GameOfTable {
+public class GameOfTable extends CollectionOfGame {
 
     public int numberOfPlayers;
     public int averageDurationOfAGame;
 
-    public GameOfTable(int numberOfPlayers, int averageDurationOfAGame) {
-        this.numberOfPlayers = numberOfPlayers;
+    public GameOfTable(int idGame, String title, int yearOfPubblication, double price, int numberOfPlayers, int averageDurationOfAGame) {
+        super(idGame, title, yearOfPubblication, price);
+        this.numberOfPlayers = Math.max(2, Math.min(numberOfPlayers, 10));
         this.averageDurationOfAGame = averageDurationOfAGame;
     }
 
@@ -26,12 +27,11 @@ public class GameOfTable {
         this.averageDurationOfAGame = averageDurationOfAGame;
     }
 
-
     @Override
     public String toString() {
         return "GameOfTable{" +
                 "numberOfPlayers=" + numberOfPlayers +
                 ", averageDurationOfAGame=" + averageDurationOfAGame +
-                '}';
+                "} " + super.toString();
     }
 }

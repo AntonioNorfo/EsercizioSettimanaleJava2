@@ -3,29 +3,32 @@ package antonionorfo;
 public class Application {
 
     public static void main(String[] args) {
-
         Collezione collezione = new Collezione();
 
-        CollectionOfGame gioco1 = new CollectionOfGame(1, "Super Mario", 1985, 50.0);
-        CollectionOfGame gioco2 = new CollectionOfGame(1, "Zelda", 1986, 25.0);
-        CollectionOfGame gioco3 = new CollectionOfGame(3, "Pac-Man", 1980, 15.0);
-        CollectionOfGame gioco4 = new CollectionOfGame(4, "Donkey Kong", 1981, 75.0);
+        CollectionOfGame gioco1 = new GameOfTable(1, "Risiko", 1935, 35.0, 4, 120);
+        CollectionOfGame gioco2 = new CollectionOfGame(4, "Tomb Raider", 1980, 15.0);
+        CollectionOfGame gioco3 = new GameOfTable(3, "Dungeons and Dragons", 1995, 40.0, 4, 90);
+        CollectionOfGame gioco4 = new CollectionOfGame(5, "Spiderman", 1960, 68.0);
+        CollectionOfGame gioco5 = new CollectionOfGame(5, "Spyro", 1480, 91.0); // fatto volutamente per testing
+        CollectionOfGame gioco6 = new CollectionOfGame(6, "Dragon ball bodokai tenkaichi", 1990, 20.0);
 
         collezione.addGame(gioco1);
         collezione.addGame(gioco2);
         collezione.addGame(gioco3);
         collezione.addGame(gioco4);
+        collezione.addGame(gioco5);
+        collezione.addGame(gioco6);
 
-        
-        System.out.println("Stampa dell'intera collezione:");
-        System.out.println(collezione);
+        CollectionOfGame gameById = collezione.searchGameById(3);
+        if (gameById != null) {
+            System.out.println("\nIl gioco posizionato nell'id 3 è: " + gameById.getTitle());
+        }
 
-        System.out.println("Ricerca dei giochi con prezzo inferiore a 30.0:");
         String resultForPrice = collezione.searchGameByPrice(30.0);
-        System.out.println(resultForPrice);
+        System.out.println("\n" + resultForPrice);
 
-        System.out.println("Ricerca dei giochi con prezzo inferiore a 10.0:");
-        resultForPrice = collezione.searchGameByPrice(150.0);
-        System.out.println(resultForPrice);
+
+        String resultForPlayers = collezione.searchGameOfTableByNumberOfPlayers(4);
+        System.out.println("\n" + resultForPlayers);
     }
 }

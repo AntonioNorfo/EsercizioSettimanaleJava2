@@ -6,12 +6,11 @@ public class CollectionOfGame {
     public double price;
     private int idGame;
 
-
     public CollectionOfGame(int idGame, String title, int yearOfPubblication, double price) {
         this.idGame = idGame;
         this.title = title;
         this.yearOfPubblication = yearOfPubblication;
-        this.price = Math.min(price, 100); // valore max 100
+        this.price = Math.min(price, 70);
     }
 
     public int getIdGame() {
